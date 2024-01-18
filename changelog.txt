@@ -1,0 +1,41 @@
+  --Done 2024-01-14--
+  Started designing more test suites. Spent several hours trying to figure out why adding function
+  in the address section seems to work but not delete. Turns out it's actually broken and doesn't work when 
+  testing it manually either, will have to abandon the delete-test for the moment.
+
+  --Done 2024-01-15--
+  Going along nicely. Remember to assert more.
+  Check the price and info and see to it that it is selected for delivery address
+  Also check the PDF to see that the info is correctly saved onto the .pdf 
+
+  --Done 2024-01-16--
+  Spent a lot of time trying to figure out why the login function refuses to give the proper response header.
+  Turned out the server sends out a "blocked/not allowed" response when trying to automate it, also will not
+  return authentification token despite login info being correct and in the correct format. Really odd.
+
+  In the end I went for another approach. The test-suite will run an intial login the normal way using fill
+  and then save the api response, parse the response for the auth token and save it for reusing later on.
+
+  --Done 2024-01-17--
+  Cleaned up a little bit and started building a test to test the wishlist. It will navigate the page, adding some
+  items to the wishlist, then interact with them somehow. 
+
+  Spent some time Figuring out a more logical way to set up the page-object structure. Navigation now handles all page visits
+  and most wait button presses since it has the function that handles the regex, saving me some headcache.
+
+  Also added a TestUtils.js file. It handles some simple tasks like removing paranthesis, removing some hassle.
+
+  --Done 2024-01-18--
+
+  Did a lot of refactoring. Moved more functions into the TestUtils.js file instead of handling them separately in every file.
+  Looks nice and is more logical.
+
+  All tests currently work and can be ran concurrently, not experiencing any flakiness. Asserts work nicely. Even got the
+  changeAccountSettings.spec.js file to work, though it will have to wait before getting any further attention due to the 
+  pages delete function being very broken.
+
+  --Future plans--
+  >Test search function
+  >Test making a customer computer
+  >Test popups in cart etc.
+  >Test changing password and then logging in with new password and/or old
