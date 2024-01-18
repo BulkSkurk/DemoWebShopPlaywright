@@ -50,6 +50,7 @@ test("Add items to wishlist", async ({ page }) => {
   const apparelAndShoes = new ApparelAndShoesPage(page);
   await loginPage.setLoginToken(loginToken);
   await navigation.visitMainPage();
+
   await navigation.navgiateToApparelAndShoes();
   await apparelAndShoes.wishListBlueGreenSneaker("2");
 

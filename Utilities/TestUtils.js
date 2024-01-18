@@ -12,4 +12,9 @@ export class TestUtils {
   randomLoginGenerator = async () => {
     return { email: uuidv4() + "@gmail.com", password: uuidv4() };
   };
+
+  isDeskTopViewPort = () => {
+    const size = this.page.viewportSize();
+    return size.width <= 600;
+  };
 }

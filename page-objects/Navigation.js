@@ -1,3 +1,4 @@
+import { TestUtils } from "../Utilities/TestUtils";
 export class Navigation {
   constructor(page) {
     this.page = page;
@@ -11,6 +12,10 @@ export class Navigation {
     this.apparelAndShoesLink = page.locator('[href="/apparel-shoes"]').first();
     this.wishlistLink = page.locator('[class="cart-label"]').last();
     this.loginLink = page.getByRole("link", { name: "Log in" });
+
+    this.categoriesMobileTab = page.getByRole("link", { name: "Categories" });
+    this.mobileApparelAndShoesLink = page.locator('[href="/apparel-shoes"]').nth(1);
+    this.mobileBooksLink = page.locator('[href="/books"]').nth(1);
   }
   visitLoginPage = async () => {
     await this.page.goto("/login");
@@ -38,7 +43,12 @@ export class Navigation {
   };
 
   navigateToBooks = async () => {
-    await this.navigateTo(this.bookButton, "/books");
+    const testUtils = new TestUtils(await this.page);
+    if (testUtils.isDeskTopViewPort()) {
+      await this.navigateTo(this.mobileBooksLink, "/books", true);
+    } else {
+      await this.navigateTo(this.bookButton, "/books");
+    }
   };
 
   navigateToShoppingCart = async () => {
@@ -58,17 +68,29 @@ export class Navigation {
   };
 
   navgiateToApparelAndShoes = async () => {
-    await this.navigateTo(this.apparelAndShoesLink, "/apparel-shoes");
+    const testUtils = new TestUtils(await this.page);
+    if (testUtils.isDeskTopViewPort()) {
+      await this.navigateTo(this.mobileApparelAndShoesLink, "/apparel-shoes", true);
+    } else {
+      await this.navigateTo(this.apparelAndShoesLink, "/apparel-shoes");
+    }
   };
 
   navigateToWishlist = async () => {
     await this.navigateTo(this.wishlistLink, "/wishlist");
   };
 
-  navigateTo = async (locatorTarget, hrefStub) => {
-    await locatorTarget.waitFor();
-    await locatorTarget.click();
+  navigateTo = async (locatorTarget, hrefStub, mobile = false) => {
+    if (mobile) {
+      await this.categoriesMobileTab.waitFor();
+      await this.categoriesMobileTab.click();
 
+      await locatorTarget.waitFor();
+      await locatorTarget.click();
+    } else {
+      await locatorTarget.waitFor();
+      await locatorTarget.click();
+    }
     const regexPattern = new RegExp(hrefStub);
 
     await this.page.waitForURL(regexPattern, { timeout: 8000 });
