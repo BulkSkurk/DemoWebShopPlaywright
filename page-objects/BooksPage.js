@@ -35,7 +35,7 @@ export class BooksPage {
 
       expect(cartQuantityNumberAfter).toEqual(cartQuantityNumberBefore + 1);
     } else {
-      console.warn(`Book number ${bookNumber} is not currently available to buy.`);
+      console.warn(`Item amount ${bookNumber} is not currently available to buy.`);
     }
   };
 
