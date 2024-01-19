@@ -1,8 +1,8 @@
 import { expect } from "@playwright/test";
-import { addressDetails } from "../data/addressDetails";
 import { Navigation } from "./Navigation";
 
 import { checkoutData } from "../data/checkoutData";
+import { addressDetails } from "../data/addressDetails";
 export class CheckoutPage {
   constructor(page) {
     this.page = page;

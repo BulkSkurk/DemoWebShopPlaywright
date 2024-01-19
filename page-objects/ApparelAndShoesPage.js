@@ -1,5 +1,5 @@
 import { expect } from "@playwright/test";
-import { TestUtils } from "../Utilities/TestUtils";
+import { TestUtils } from "../utilities/TestUtils";
 export class ApparelAndShoesPage {
   constructor(page) {
     this.page = page;

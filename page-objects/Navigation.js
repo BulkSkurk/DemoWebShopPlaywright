@@ -1,4 +1,4 @@
-import { TestUtils } from "../Utilities/TestUtils";
+import { TestUtils } from "../utilities/TestUtils";
 export class Navigation {
   constructor(page) {
     this.page = page;

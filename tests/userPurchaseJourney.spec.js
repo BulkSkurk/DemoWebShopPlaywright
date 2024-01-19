@@ -1,12 +1,13 @@
 import { test } from "@playwright/test";
 import { LoginPage } from "../page-objects/LoginPage";
-import { defaultUser } from "../data/loginDetails";
 import { Navigation } from "../page-objects/Navigation";
 import { BooksPage } from "../page-objects/BooksPage";
 import { CheckoutPage } from "../page-objects/CheckoutPage";
+import { ApparelAndShoesPage } from "../page-objects/ApparelAndShoesPage";
 
 import { checkoutData } from "../data/checkoutData";
-import { ApparelAndShoesPage } from "../page-objects/ApparelAndShoesPage";
+import { defaultUser } from "../data/loginDetails";
+
 let loginToken = "";
 
 test.beforeAll("Test login and retreive login cookie", async ({ browser }) => {

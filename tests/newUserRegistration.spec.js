@@ -2,7 +2,7 @@ import { test } from "@playwright/test";
 import { RegistrationPage } from "../page-objects/RegistrationPage";
 import { Navigation } from "../page-objects/Navigation";
 import { LoginPage } from "../page-objects/LoginPage";
-import { TestUtils } from "../Utilities/TestUtils";
+import { TestUtils } from "../utilities/TestUtils";
 
 test("Test registration of new user flow", async ({ page }) => {
   const registrationPage = new RegistrationPage(page);
